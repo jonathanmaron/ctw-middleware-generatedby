@@ -1,0 +1,41 @@
+{
+    "name": "ctw/ctw-middleware-generated-by",
+    "type": "library",
+    "description": "This middleware adds an X-Generated-By UUID to the Response header.",
+    "license": "BSD-3-Clause",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ctw/ctw-middleware": "^1.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.5",
+        "symfony/var-dumper": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ctw\\Middleware\\GeneratedByMiddleware\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CtwTest\\Middleware\\GeneratedByMiddleware\\": "src"
+        }
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/phpcs",
+        "phpcbf": "vendor/bin/phpcbf",
+        "phpstan": "rm -fr build/phpstan && mkdir -p build/phpstan && vendor/bin/phpstan analyse --error-format=raw --configuration=phpstan.neon | tee build/phpstan/output.txt",
+        "test": "export XDEBUG_MODE=coverage && vendor/bin/phpunit --debug",
+        "qa": [
+            "@phpcbf",
+            "@phpcs",
+            "@phpstan",
+            "@test"
+        ]
+    }
+}
