@@ -33,4 +33,3 @@ abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
         return $ret;
     }
 }
-
