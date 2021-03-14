@@ -24,7 +24,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "CtwTest\\Middleware\\GeneratedByMiddleware\\": "src"
+            "CtwTest\\Middleware\\GeneratedByMiddleware\\": "test"
         }
     },
     "scripts": {
