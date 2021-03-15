@@ -14,10 +14,11 @@ abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
         $name = '';
 
         foreach (['SERVER_ADDR', 'SERVER_NAME'] as $key) {
+            if (!isset($serverParams[$key])) {
+                continue;
+            }
             $value = (string) $serverParams[$key] ?? '';
-            $value = trim($value);
-            $value = strtolower($value);
-            $name  .= $value;
+            $name  .= strtolower(trim($value));
         }
 
         if (empty($name)) {

@@ -1,7 +1,7 @@
 {
     "name": "ctw/ctw-middleware-generated-by",
     "type": "library",
-    "description": "This PSR-15 middleware adds an X-Generated-By UUID to the Response header.",
+    "description": "This PSR-15 middleware adds an X-Generated-By UUID v5 to the Response header.",
     "license": "BSD-3-Clause",
     "config": {
         "sort-packages": true
@@ -12,6 +12,7 @@
         "ramsey/uuid": "^4.1"
     },
     "require-dev": {
+        "laminas/laminas-diactoros": "^2.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "^3.5",

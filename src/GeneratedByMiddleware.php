@@ -15,8 +15,7 @@ class GeneratedByMiddleware extends AbstractGeneratedByMiddleware
     {
         $response = $handler->handle($request);
         $server   = $request->getServerParams();
-        $serverId = $this->getServerId($server);
 
-        return $response->withHeader(self::HEADER, $serverId);
+        return $response->withHeader(self::HEADER, $this->getServerId($server));
     }
 }
