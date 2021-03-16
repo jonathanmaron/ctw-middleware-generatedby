@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace CtwTest\Middleware\GeneratedByMiddleware;
 
 use Ctw\Middleware\GeneratedByMiddleware\GeneratedByMiddleware;
+use Ctw\Middleware\GeneratedByMiddleware\GeneratedByMiddlewareFactory;
+use Laminas\ServiceManager\ServiceManager;
 use Middlewares\Utils\Dispatcher;
 use Middlewares\Utils\Factory;
 
@@ -17,12 +19,20 @@ class GeneratedByMiddlewareTest extends AbstractCase
         ];
         $request      = Factory::createServerRequest('GET', '/', $serverParams);
         $stack        = [
-            new GeneratedByMiddleware(),
+            $this->getInstance(),
         ];
         $response     = Dispatcher::run($stack, $request);
 
         $actual = $response->getHeaderLine('X-Generated-By');
 
         $this->assertEquals('78ac0e14-0f2b-529e-81e2-a0f50f6029c5', $actual);
+    }
+
+    private function getInstance(): GeneratedByMiddleware
+    {
+        $container = new ServiceManager();
+        $factory   = new GeneratedByMiddlewareFactory();
+
+        return $factory->__invoke($container);
     }
 }
