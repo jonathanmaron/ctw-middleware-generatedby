@@ -21,8 +21,8 @@ class GeneratedByMiddlewareTest extends AbstractCase
         ];
         $response     = Dispatcher::run($stack, $request);
 
-        $string = $response->getHeaderLine('X-Generated-By');
+        $actual = $response->getHeaderLine('X-Generated-By');
 
-        $this->assertEquals('78ac0e14-0f2b-529e-81e2-a0f50f6029c5', $string);
+        $this->assertEquals('78ac0e14-0f2b-529e-81e2-a0f50f6029c5', $actual);
     }
 }
