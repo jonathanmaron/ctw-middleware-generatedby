@@ -4,11 +4,11 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/ctw/ctw-middleware-generated-by/v/stable)](https://packagist.org/packages/ctw/ctw-middleware-generated-by)
 
-PSR-15 middleware to create a UUID v5 (Universally Unique Identifiers) and add it to the `X-Generated-By` header of the
-response. This is useful for logging and debugging.
+PSR-15 middleware to create a UUID v5 (Universally Unique Identifiers) and add it to the `X-Generated-By` header of the response. The UUID is created using the server IP address i.e. `$_SERVER['SERVER_ADDR']` and domain name of the application i.e. `$_SERVER['SERVER_NAME']`.
 
-[middlewares/utils](https://packagist.org/packages/middlewares/utils) provides utility classes for working with PSR-15
-and [ramsey/uuid](https://github.com/ramsey/uuid) provides UUID v5 generation.
+This functionality is useful when multiple applications servers are running behind a load balancer. By inspecting the `X-Generated-By` header, it is possible to find out exactly which application server processed the request without exposing its public IP addresses.
+
+[middlewares/utils](https://packagist.org/packages/middlewares/utils) provides utility classes for working with PSR-15 and [ramsey/uuid](https://github.com/ramsey/uuid) provides UUID v5 generation.
 
 ## Installation
 
