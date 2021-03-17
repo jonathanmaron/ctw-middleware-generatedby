@@ -1,9 +1,92 @@
-# ctw-middleware-generated-by
+# ctw/ctw-middleware-generated-by
 
 [![Build Status](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/ctw/ctw-middleware-generated-by/v/stable)](https://packagist.org/packages/ctw/ctw-middleware-generated-by)
 
+PSR-15 middleware to create a UUID v5 (Universally Unique Identifiers) and add it to the `X-Generated-By` header of the
+response. This is useful for logging and debugging.
+
+[middlewares/utils](https://packagist.org/packages/middlewares/utils) provides utility classes for working with PSR-15
+and [ramsey/uuid](https://github.com/ramsey/uuid) provides UUID v5 generation.
+
+## Installation
+
+Install the middleware using Composer:
+
 ```bash
 $ composer require ctw/ctw-middleware-generated-by
+```
+
+## Standalone Example
+
+```php
+use Ctw\Middleware\GeneratedByMiddleware\GeneratedByMiddlewareFactory;
+use Laminas\ServiceManager\ServiceManager;
+use Middlewares\Utils\Dispatcher;
+use Middlewares\Utils\Factory;
+
+$container = new ServiceManager();
+$factory   = new GeneratedByMiddlewareFactory();
+
+$generatedByMiddleware = $factory->__invoke($container);
+
+$serverParams = [
+    'SERVER_ADDR' => '1.1.1.1',
+    'SERVER_NAME' => 'www.example.com',
+];
+$request      = Factory::createServerRequest('GET', '/', $serverParams);
+$stack        = [
+    $generatedByMiddleware,
+];
+$response     = Dispatcher::run($stack, $request);
+
+$uuid = $response->getHeaderLine('X-Generated-By');
+
+dump($uuid);  // 78ac0e14-0f2b-529e-81e2-a0f50f6029c5
+```
+
+## Example in [Mezzio](https://docs.mezzio.dev/)
+
+The middleware has been extensively tested in Mezzio.
+
+After using Composer to install, simply make the following changes to your application's configuration.
+
+In `config/config.php`:
+
+```php
+$providers = [
+    // [..]
+    \Ctw\Middleware\GeneratedByMiddleware\ConfigProvider::class,
+    // [..]    
+];
+```
+
+In `config/pipeline.php`:
+
+```php
+use Ctw\Middleware\GeneratedByMiddleware\GeneratedByMiddleware;
+use Mezzio\Application;
+use Mezzio\MiddlewareFactory;
+use Psr\Container\ContainerInterface;
+
+return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
+    // [..]
+    $app->pipe(GeneratedByMiddleware::class);
+    // [..]
+};
+```
+
+You can then test to ensure that the `X-Generated-At` header is in the returned HTTP headers with:
+
+```bash
+curl -I -k https://www.example.com.development
+```
+
+If you see the `X-Generated-At` header, the middleware is correctly installed:
+
+```bash
+date: Wed, 17 Mar 2021 05:59:26 GMT
+x-generated-by: ce9f95cf-9ce3-5c0d-8c59-c579f2e474fb
+content-type: text/html; charset=utf-8
 ```
