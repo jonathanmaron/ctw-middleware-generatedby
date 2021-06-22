@@ -25,7 +25,7 @@ class GeneratedByMiddlewareTest extends AbstractCase
 
         $actual = $response->getHeaderLine('X-Generated-By');
 
-        $this->assertEquals('78ac0e14-0f2b-529e-81e2-a0f50f6029c5', $actual);
+        self::assertEquals('78ac0e14-0f2b-529e-81e2-a0f50f6029c5', $actual);
     }
 
     public function testMissingServerVars(): void
@@ -37,7 +37,7 @@ class GeneratedByMiddlewareTest extends AbstractCase
 
         $actual = $response->getHeaderLine('X-Generated-By');
 
-        $this->assertEquals('', $actual);
+        self::assertEquals('', $actual);
     }
 
     private function getInstance(): GeneratedByMiddleware

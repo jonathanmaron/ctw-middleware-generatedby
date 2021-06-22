@@ -21,7 +21,7 @@ abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
             $name  .= strtolower(trim($value));
         }
 
-        if (empty($name)) {
+        if (0 === strlen($name)) {
             return '';
         }
 
