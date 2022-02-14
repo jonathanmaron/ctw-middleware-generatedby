@@ -5,7 +5,7 @@
     "type": "library",
     "require": {
         "php": "^7.4 || ^8.0",
-        "ctw/ctw-middleware": "^1.0",
+        "ctw/ctw-middleware": "^2.0",
         "ramsey/uuid": "^4.1"
     },
     "require-dev": {
