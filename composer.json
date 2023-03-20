@@ -1,5 +1,5 @@
 {
-    "name": "ctw/ctw-middleware-generated-by",
+    "name": "ctw/ctw-middleware-generatedby",
     "description": "This PSR-15 middleware adds an X-Generated-By UUID v5 to the Response header.",
     "license": "BSD-3-Clause",
     "type": "library",

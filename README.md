@@ -1,8 +1,8 @@
-# ctw/ctw-middleware-generated-by
+# ctw/ctw-middleware-generatedby
 
-[![Build Status](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generated-by/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/ctw/ctw-middleware-generated-by/v/stable)](https://packagist.org/packages/ctw/ctw-middleware-generated-by)
+[![Build Status](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/ctw/ctw-middleware-generatedby/v/stable)](https://packagist.org/packages/ctw/ctw-middleware-generatedby)
 
 PSR-15 middleware to create a UUID v5 (Universally Unique Identifiers) and add it to the `X-Generated-By` header of the response. The UUID is created using the server IP address i.e. `$_SERVER['SERVER_ADDR']` and domain name of the application i.e. `$_SERVER['SERVER_NAME']`.
 
@@ -15,7 +15,7 @@ This functionality is useful when multiple applications servers are running behi
 Install the middleware using Composer:
 
 ```bash
-$ composer require ctw/ctw-middleware-generated-by
+$ composer require ctw/ctw-middleware-generatedby
 ```
 
 ## Standalone Example

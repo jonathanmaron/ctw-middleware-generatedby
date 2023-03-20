@@ -15,7 +15,7 @@
     </report>
   </coverage>
   <testsuites>
-    <testsuite name="ctw/ctw-middleware-generated-by">
+    <testsuite name="ctw/ctw-middleware-generatedby">
       <directory>test</directory>
     </testsuite>
   </testsuites>
