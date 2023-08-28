@@ -18,9 +18,7 @@ class GeneratedByMiddlewareTest extends AbstractCase
             'SERVER_NAME' => 'www.example.com',
         ];
         $request      = Factory::createServerRequest('GET', '/', $serverParams);
-        $stack        = [
-            $this->getInstance(),
-        ];
+        $stack        = [$this->getInstance()];
         $response     = Dispatcher::run($stack, $request);
 
         $actual = $response->getHeaderLine('X-Generated-By');
@@ -30,9 +28,7 @@ class GeneratedByMiddlewareTest extends AbstractCase
 
     public function testMissingServerVars(): void
     {
-        $stack    = [
-            $this->getInstance(),
-        ];
+        $stack    = [$this->getInstance()];
         $response = Dispatcher::run($stack);
 
         $actual = $response->getHeaderLine('X-Generated-By');

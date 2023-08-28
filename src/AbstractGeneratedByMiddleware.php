@@ -21,13 +21,13 @@ abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
             $name  .= strtolower(trim($value));
         }
 
-        if (0 === strlen($name)) {
+        if ('' === $name) {
             return '';
         }
 
         try {
             $ret = Uuid::uuid5(Uuid::NAMESPACE_URL, $name)->toString();
-        } catch (Exception $e) {
+        } catch (Exception) {
             $ret = '';
         }
 
