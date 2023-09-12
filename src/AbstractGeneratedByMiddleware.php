@@ -17,7 +17,7 @@ abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
             if (!isset($serverParams[$key])) {
                 continue;
             }
-            $value = (string) $serverParams[$key] ?? '';
+            $value = (string) $serverParams[$key];
             $name  .= strtolower(trim($value));
         }
 
