@@ -1,8 +1,9 @@
 # Package "ctw/ctw-middleware-generatedby"
 
-[![Build Status](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/build-status/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/ctw/ctw-middleware-generatedby/v/stable)](https://packagist.org/packages/ctw/ctw-middleware-generatedby)
+[![GitHub Actions](https://github.com/jonathanmaron/ctw-middleware-generatedby/actions/workflows/tests.yml/badge.svg)](https://github.com/jonathanmaron/ctw-middleware-generatedby/actions/workflows/tests.yml)
+[![Scrutinizer Build](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/build.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/build-status/master)
+[![Scrutinizer Quality](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/jonathanmaron/ctw-middleware-generatedby/?branch=master)
 
 PSR-15 middleware to create a UUID v5 (Universally Unique Identifiers) and add it to the `X-Generated-By` header of the response. The UUID is created using the server IP address i.e. `$_SERVER['SERVER_ADDR']` and domain name of the application i.e. `$_SERVER['SERVER_NAME']`.
 
