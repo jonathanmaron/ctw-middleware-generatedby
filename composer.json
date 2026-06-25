@@ -11,8 +11,8 @@
         "ramsey/uuid": "^4.1"
     },
     "require-dev": {
-        "ctw/ctw-qa": "^5.0",
-        "phpunit/phpunit": "^12.0",
+        "ctw/ctw-qa": "dev-php85",
+        "phpunit/phpunit": "^13.0",
         "symfony/var-dumper": "^7.0"
     },
     "minimum-stability": "dev",

@@ -77,7 +77,7 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
      */
     public function testFactoryAcceptsAnyContainerInterface(): void
     {
-        $container = $this->createMock(ContainerInterface::class);
+        $container = $this->createStub(ContainerInterface::class);
         $factory   = new GeneratedByMiddlewareFactory();
 
         $middleware = $factory($container);
