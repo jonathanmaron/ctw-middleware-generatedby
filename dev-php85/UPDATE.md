@@ -5,8 +5,25 @@
 - **Date:** 2026-06-25
 
 This is a **TODO list** of the changes required for this package to run cleanly
-under PHP 8.5.7. Nothing here has been fixed yet — the fixes happen in a second
-step. Boxes are intentionally left unchecked.
+under PHP 8.5.7. Boxes are intentionally left unchecked.
+
+---
+
+## ✅ Applied on `php85` (diactoros blocker resolved)
+
+> Supersedes the "❌ FAILS" analysis below.
+
+`composer.json` changes:
+
+- [x] `laminas/laminas-diactoros` `^2.11` → **`^3.0`** (installs 3.8.0).
+- [x] `ctw/ctw-middleware` `^4.0` → **`dev-php85`** (diactoros 3 / middlewares-utils 4 / servicemanager 4.5).
+- [x] `ramsey/uuid ^4.1` left as-is — resolves a PHP 8.5-compatible 4.x release.
+
+**Result:** `composer update -W` is green; `phpunit --no-coverage` reports
+**41 tests, 57 assertions, 0 deprecations** (the `middlewares/utils` deprecations
+are cleared by v4). One residual PHPUnit "mock without expectations" notice
+(PHPUnit 12.5; not a PHP 8.5 issue) plus the shared PHPStan unmatched-ignore (§3).
+Re-tag `ctw/ctw-middleware` to stable before merge.
 
 > ⚠️ **This package declares `laminas/laminas-diactoros` directly**, so it needs
 > the Diactoros bump in its *own* `composer.json` (§1), not just via
