@@ -12,9 +12,9 @@ use Psr\Http\Server\MiddlewareInterface;
 final class GeneratedByMiddlewareFactoryTest extends AbstractCase
 {
     /**
-     * Test that factory creates middleware instance
+     * Test that __invoke() returns a GeneratedByMiddleware instance when called with a container.
      */
-    public function testFactoryCreatesMiddlewareInstance(): void
+    public function testInvokeWithContainerReturnsGeneratedByMiddleware(): void
     {
         $container  = new ServiceManager();
         $factory    = new GeneratedByMiddlewareFactory();
@@ -25,9 +25,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory returns MiddlewareInterface
+     * Test that __invoke() returns an instance implementing the PSR-15 MiddlewareInterface.
      */
-    public function testFactoryReturnsMiddlewareInterface(): void
+    public function testInvokeWithContainerReturnsMiddlewareInterface(): void
     {
         $container  = new ServiceManager();
         $factory    = new GeneratedByMiddlewareFactory();
@@ -38,9 +38,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory can be instantiated
+     * Test that the factory can be constructed without arguments.
      */
-    public function testFactoryCanBeInstantiated(): void
+    public function testConstructWithoutArgumentsCreatesFactory(): void
     {
         $factory = new GeneratedByMiddlewareFactory();
 
@@ -49,9 +49,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory is invokable
+     * Test that the factory is invokable as a callable.
      */
-    public function testFactoryIsInvokable(): void
+    public function testFactoryIsCallable(): void
     {
         $factory = new GeneratedByMiddlewareFactory();
 
@@ -60,9 +60,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory creates new instance each time
+     * Test that __invoke() returns a distinct middleware instance on each call.
      */
-    public function testFactoryCreatesNewInstanceEachTime(): void
+    public function testInvokeCalledTwiceReturnsDistinctInstances(): void
     {
         $container   = new ServiceManager();
         $factory     = new GeneratedByMiddlewareFactory();
@@ -73,9 +73,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory accepts any ContainerInterface
+     * Test that __invoke() accepts any PSR-11 ContainerInterface implementation.
      */
-    public function testFactoryAcceptsAnyContainerInterface(): void
+    public function testInvokeWithArbitraryContainerReturnsGeneratedByMiddleware(): void
     {
         $container = self::createStub(ContainerInterface::class);
         $factory   = new GeneratedByMiddlewareFactory();
@@ -87,9 +87,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory does not use container services
+     * Test that __invoke() never queries the container for services.
      */
-    public function testFactoryDoesNotUseContainerServices(): void
+    public function testInvokeDoesNotQueryContainerServices(): void
     {
         $container = $this->createMock(ContainerInterface::class);
         $container->expects(self::never())->method('get');
@@ -100,9 +100,9 @@ final class GeneratedByMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that __invoke is callable
+     * Test that the factory exposes a callable __invoke() method.
      */
-    public function testInvokeMethodIsCallable(): void
+    public function testInvokeMethodExistsOnFactory(): void
     {
         $factory = new GeneratedByMiddlewareFactory();
 
