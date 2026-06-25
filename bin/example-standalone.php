@@ -18,9 +18,7 @@ $serverParams = [
     'SERVER_NAME' => 'www.example.com',
 ];
 $request      = Factory::createServerRequest('GET', '/', $serverParams);
-$stack        = [
-    $generatedByMiddleware,
-];
+$stack        = [$generatedByMiddleware];
 $response     = Dispatcher::run($stack, $request);
 
 $uuid = $response->getHeaderLine('X-Generated-By');
