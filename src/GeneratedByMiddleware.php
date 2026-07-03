@@ -11,6 +11,7 @@ class GeneratedByMiddleware extends AbstractGeneratedByMiddleware
 {
     private const string HEADER = 'X-Generated-By';
 
+    #[\Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);

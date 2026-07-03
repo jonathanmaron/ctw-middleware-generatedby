@@ -9,6 +9,7 @@ use Ramsey\Uuid\Uuid;
 
 abstract class AbstractGeneratedByMiddleware extends AbstractMiddleware
 {
+    #[\NoDiscard]
     protected function getServerId(array $serverParams): string
     {
         $name = '';
